@@ -31,7 +31,7 @@ public class MainPanel extends JPanel {
 	return _cells;
     }
 
-    public int convertToInt(int x) {
+    private int convertToInt(int x) {
 	int c = 0;
 	String padding = "0";
 	while (c < _r) {

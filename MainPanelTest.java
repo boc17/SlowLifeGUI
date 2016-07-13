@@ -10,8 +10,8 @@ public class MainPanelTest {
 		
 		MainPanel x = new MainPanel(10);
 		
-		int m = x.convertToInt(20);
-		assertEquals(20, m);
+		int m = x.convertToInt(0);
+		assertEquals(0, m);
 		
 	}
 	
@@ -30,9 +30,20 @@ public class MainPanelTest {
 		
 		MainPanel x = new MainPanel(30);
 		
-		int m = x.convertToInt(15);
-		assertEquals(15, m);
+		int m = x.convertToInt(1000);
+		assertEquals(1000, m);
 		
 	}
+	
+	@Test
+	public void testConvertToInt3() {
+		
+		MainPanel x = new MainPanel(30);
+		
+		int m = x.convertToInt(20);
+		assertEquals(20, m);
+		
+	}
+	
 	
 }
