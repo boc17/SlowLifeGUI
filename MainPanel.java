@@ -31,7 +31,7 @@ public class MainPanel extends JPanel {
 	return _cells;
     }
 
-    private int convertToInt(int x) {
+    public int convertToInt(int x) {
 	int c = 0;
 	String padding = "0";
 	while (c < _r) {
@@ -42,6 +42,7 @@ public class MainPanel extends JPanel {
 	
 	String n = padding + String.valueOf(x);
 	int q = Integer.parseInt(n);
+	
 	return q;
     }
     
@@ -67,8 +68,9 @@ public class MainPanel extends JPanel {
 	if (_cells[rightX][y].getAlive())     { numNeighbors++; }
 	if (_cells[x][upY].getAlive())        { numNeighbors++; }
 	if (_cells[x][downY].getAlive())      { numNeighbors++; }
-	    
-	return convertToInt(numNeighbors);
+	
+	return numNeighbors;
+//	return convertToInt(numNeighbors);
 
     }
 
@@ -192,17 +194,27 @@ public class MainPanel extends JPanel {
 
 	String toWrite = "";
 	
-	for (int j = 0; j < _size; j++) {
-	    for(int k = 0; k < _size; k++) {
-		if (_cells[j][k].getAlive()) {
-		    toWrite += _cells[j][k].toString();
-		} else {
-		    toWrite += _cells[j][k].toString();
+	for (int j = 0; j < _size; j++) 
+	{
+	    for(int k = 0; k < _size; k++) 
+	    {
+		if (_cells[j][k].getAlive()) 
+		{
+		 //   toWrite += _cells[j][k].toString();
+			  toWrite += "X";
+		} 
+		else 
+		{
+		 //   toWrite += _cells[j][k].toString();
+			  toWrite += ".";
 		}
 		    
 	    }
 	    toWrite += "\n";
+	    
+	    
 	}
+
 	return toWrite;
     }
 
@@ -221,20 +233,23 @@ public class MainPanel extends JPanel {
 
     public void runContinuous() {
 	_running = true;
+	
 	while (_running) {
 	    System.out.println("Running...");
 	    int origR = _r;
 	    try {
 		Thread.sleep(20);
 	    } catch (InterruptedException iex) { }
+/*	    
 	    for (int j=0; j < _maxCount; j++) {
 	    	_r += (j % _size) % _maxCount;
 		_r += _maxCount;
 	    }
 	    _r = origR;
+*/	
 	    backup();
 	    calculateNextIteration();
-	}
+	  }
     }
 
     /**
